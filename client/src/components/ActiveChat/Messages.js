@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box } from '@material-ui/core';
 import { SenderBubble, OtherUserBubble } from '.';
 import moment from 'moment';
+import { brown } from '@material-ui/core/colors';
 
 const Messages = (props) => {
-  const { messages, otherUser, userId } = props;
+  const { otherUser, messages, userId } = props;
+  
+  messages.sort((a,b) =>  new Date(a.createdAt) - new Date(b.createdAt));
 
   return (
     <Box>
